@@ -5,8 +5,6 @@ import javafx.application.Platform;
 import java.io.IOException;
 import java.net.Socket;
 
-import javafx.application.Platform;
-
 /**
  * Zarządzanie klientem gry Go.
  * <p>
@@ -20,7 +18,6 @@ public class Client implements GameClientObserver {
 
     private ServerProxy server;
     private GUI gui; // Referencja do okna
-    private Stone myStone;
     private boolean myTurn = false;
 
     /**
@@ -111,7 +108,6 @@ public class Client implements GameClientObserver {
      */
     @Override
     public void onGameStart(Stone myColor) {
-        this.myStone = myColor;
         this.myTurn = (myColor == Stone.BLACK); // Czarne zaczynają
 
         gui.updateInfo("Grasz jako: " + (myColor == Stone.BLACK ? "CZARNE" : "BIAŁE"));

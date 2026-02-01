@@ -1,8 +1,5 @@
 package com.roahacha.gogame;
 
-import java.io.*;
-import java.net.Socket;
-
 import com.roahacha.gogame.Common.GameAction;
 import com.roahacha.gogame.Common.SocketFacade;
 import com.roahacha.gogame.Common.Stone;

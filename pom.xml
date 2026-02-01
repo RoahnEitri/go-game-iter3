@@ -66,7 +66,13 @@
           <execution>
             <id>client-cli</id>
             <configuration>
-              <mainClass>com.roahacha.gogame.GUI</mainClass>
+              <mainClass>com.roahacha.gogame.GUI_Player</mainClass>
+            </configuration>
+          </execution>
+          <execution>
+            <id>bot-cli</id>
+            <configuration>
+              <mainClass>com.roahacha.gogame.GUI_Bot</mainClass>
             </configuration>
           </execution>
         </executions>

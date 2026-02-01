@@ -4,7 +4,6 @@ import com.roahacha.gogame.Common.*;
 
 import java.io.IOException;
 import java.net.Socket;
-import com.roahacha.gogame.Common.*;
 
 
 /**
