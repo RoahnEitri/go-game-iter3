@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -64,6 +65,22 @@ public class GameService {
             moveRepository.save(move);
             System.out.println(">>> BAZA DANYCH: Zapisano ruch nr " + moveOrder);
         });
+    }
+
+    /**
+     * Pobiera listę ruchów z bazy danych dla danej gry, posortowaną chronologicznie.
+     * Używana przez ReplaySession do wizualizacji gry.
+     */
+    @Transactional
+    public List<MoveEntity> getMovesForGame(Long gameId) {
+        GameEntity game = gameRepository.findById(gameId).orElse(null);
+        if (game == null) {
+            return new ArrayList<>();
+        }
+        // Pobieramy ruchy i sortujemy je po kolei
+        List<MoveEntity> moves = game.moves;
+        moves.sort(Comparator.comparingInt(m -> m.moveOrder));
+        return moves;
     }
 
     /**

@@ -22,14 +22,14 @@ public class BotClient extends Client {
      */
     @Override
     public void onGameAction(GameAction action) {
-        // 1. Najpierw wywołaj oryginalną logikę (aktualizacja GUI, komunikatów)
+        // Najpierw wywołaj oryginalną logikę (aktualizacja GUI, komunikatów)
         // Dzięki temu na ekranie nadal widać co się dzieje.
         super.onGameAction(action);
 
-        // 2. Logika Bota
+        // Logika Bota
         // Reagujemy tylko na konkretne sygnały z Enuma GameAction
         if (action == GameAction.GAME_YOUR_TURN || action == GameAction.GAME_INCORRENT_MOVE) {
-            
+
             // Uruchamiamy wątek, żeby nie zamrozić GUI podczas "myślenia" (sleep)
             new Thread(() -> {
                 try {
@@ -46,7 +46,7 @@ public class BotClient extends Client {
     private void makeRandomMove() {
         int r = random.nextInt(SIZE);
         int c = random.nextInt(SIZE);
-        
+
         System.out.println("[BOT] Próba ruchu: " + r + ", " + c);
         // Korzystamy z metody sendMove dostępnej w klasie rodzica (Client)
         this.sendMove(r, c);
